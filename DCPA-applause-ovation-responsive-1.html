@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!--POST
+/*************** EDITOR INSERTED BEGIN ***************/
+    var customerNumber = user.attr('customernumber');
+    var __MMID__ = masterinfo.getID();
+    var __firstName__ = user.attr('firstName');
+	if (__firstName__ == null || __firstName__ == "") __firstName__ = 'Valued Patron'; //Default Value Condition
+    var surveyLink = "";
+    var videoLink = "";
+    var galleryLink = "";
+    var showName = "Show Name Here";
+    var ph = "Take a look behind the scenes and let us know what you thought of the show";
+    
+    var currentTime = new Date();
+    var month = currentTime.getMonth() +1;
+    var day = currentTime.getDate();
+    var year = currentTime.getFullYear();
+    var currentDate = (month + "/" + day + "/" + year);
+    
+    var date1 = new Date("10/30/2016");
+    var date2 = new Date("11/11/2016");
+    var date3 = new Date("12/14/2016");
+    
+    // See "if" statements at the bottom of the document
+    
+/*************** EDITOR INSERTED END ***************/
+POST-->
+
+<meta charset="utf-8" />
+<style type="text/css">
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700|Roboto+Slab:100,400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+[style*="Montserrat"] {
+    font-family: 'Montserrat', Arial, sans-serif !important
+}
+
+/*-- Add your other styles below 
+==========================================
+These are some of the default styles to use
+==========================================
+
+font-family: Arial, Helvetica, sans-serif;
+font-family: 'Roboto', Arial, sans-serif; 
+font-family: 'Roboto Slab', Georgia, serif;
+font-family: 'Open Sans', Arial, sans-serif;
+font-family: Arial, sans-serif, 'Montserrat';
+
+--*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: #555;
+	background-color: #FFFFFF;
+}
+a {
+	color: #79C79A;
+	text-decoration: none;
+}
+a img {
+	border: none;
+}
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 1.1em;
+	vertical-align:top;
+}
+ul li {
+	color: #747474;
+	list-style: none; /* if you're not already using a reset */
+	padding: 0px;
+}
+ul li:before {
+	color: #005775; /* set color to deep blue */
+	content: "\2022"; /* /2022 is the numerical unicode for &bull; */
+	font-size: 1.5em; /* set the font-size of the bullet if necessary. Make sure to use em or %*/
+	padding: 0px 5px 0px 0px; /* give the bullet some padding from the text Make sure to use em*/
+	top: .1em; /* set the vertical position of the bullet if necessary. Make sure to use em or % */
+}
+.general-padding {
+	padding: 10px;
+}
+.wrappercell {
+	padding: 0px;
+}
+#showonmobile {
+	display: none;
+}
+.similarImage img {
+    backface-visibility: hidden;
+    filter: grayscale(100%);
+    transition: ease 0.3s;
+    opacity:0.7;
+}
+.similarImage img:hover {
+    filter: grayscale(0%);
+    opacity:1; 
+}
+.imageTrans img {
+    backface-visibility: hidden;
+    filter: grayscale(100%);
+    transition: ease 0.3s;
+    opacity:0.3;
+}
+.imageTrans img:hover {
+    filter: grayscale(0%);
+    opacity:1; 
+}
+
+
+ @media all and (max-width: 480px) {
+body, table[class="wrappertable"], table[class="structure"] {
+	width: 100% !important;
+	margin: 0;
+	padding: 0;
+}
+td[class="wrappercell"] {
+	padding: 0px !important;
+}
+td[class="inner-padding"] {
+	padding: 0px !important;
+}
+td[class="general-padding"] {
+	padding: 10px !important;
+}
+/*------This makes the col split and stack on top of eachother------*/
+td[class="twocolumn"] {
+	width: 100% !important;
+	float: left !important;
+}
+/*------This makes the col split and stack on top of eachother------*/
+td[class="threecolumn"] {
+	width: 100% !important;
+	float: left !important;
+}
+#header, #full {
+	width: 100% !important;
+}
+.img-scale {
+	width: 100% !important;
+	padding: 0px !important;
+}
+td[id="hide"], span[id="hide"], br[id="hide"], a[id="hide"], img[id="hide"], strong[id="hide"] {
+	display: none !important;
+}
+td[id="showonmobile"] {
+	display: block !important;	
+}
+.line-break {
+	display: block !important;
+}
+td a[id="footer-links"] {
+	width: 95% !important;
+	background-color: #666666 !important;
+	border-radius: 5px !important;
+	color: #FFFFFF !important;
+	font-size: 14px !important;
+	padding: 13px !important;
+	margin: 3px 0px 3px 0px !important;
+	display: block !important;
+	text-align: center !important;
+}
+td a[id="links-map"] {
+	width: 92.5% !important;
+	background-color: #FFFFFF !important;
+	border-radius: 0px !important;
+	color: #47B9C7 !important;
+	border: 2px solid #47B9C7 !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	padding: 13px 13px 13px 13px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://www.denvercenter.org/Libraries/Email/map5.sflb.ashx) !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px !important;
+	background-position: 92% 50% !important;
+}
+td a[id="links"] {
+	width: 92.5% !important;
+	background-color: #47B9C7 !important;
+	border-radius: 0px !important;
+	color: #FFFFFF !important;
+	border-bottom: 2px solid #47B9C7 !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	padding: 20px 13px 20px 20px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://denvercenter.org/images/default-source/email-images/arrow-white.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 15px !important;
+	background-position: 95% 50% !important;
+}
+td a:hover[id="links"] {
+	width: 92.5% !important;
+	background-color: #FFFFFF !important;
+	border-radius: 0px !important;
+	color: #47B9C7 !important;
+	border-bottom: 2px solid #47B9C7 !important;
+	font-size: 16px !important;
+	padding: 20px 13px 20px 20px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://denvercenter.org/images/default-source/email-images/arrow-blue.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 15px !important;
+	background-position: 95% 50% !important;
+}
+td a[id="links-footer"] {
+	width: 100% !important;
+	background-color: #747474 !important;
+	border-radius: 0px !important;
+	color: #FFFFFF !important;
+	border-bottom: 2px solid #FFFFFF !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	padding: 20px 0px 20px 0px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://denvercenter.org/images/default-source/email-images/arrow-white.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 15px !important;
+	background-position: 95% 50% !important;
+}
+td a:hover[id="links-footer"] {
+	width: 100% !important;
+	background-color: #FFFFFF !important;
+	border-radius: 0px !important;
+	color: #000000 !important;
+	border-bottom: 2px solid #FFFFFF !important;
+	font-size: 16px !important;
+	padding: 20px 0px 20px 0px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://denvercenter.org/images/default-source/email-images/arrow-black.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 15px !important;
+	background-position: 95% 50% !important;
+}
+td a[id="links-callout"] {
+	width: 100% !important;
+	background-color: #000000 !important;
+	border-radius: 0px !important;
+	color: #FFFFFF !important;
+	border-bottom: 2px solid #FFFFFF !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	padding: 20px 0px 20px 0px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://denvercenter.org/images/default-source/email-images/arrow-white.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 15px !important;
+	background-position: 95% 50% !important;
+}
+td a:hover[id="links-callout"] {
+	width: 100% !important;
+	background-color: #FFFFFF !important;
+	border-radius: 0px !important;
+	color: #000000 !important;
+	border-bottom: 2px solid #FFFFFF !important;
+	font-size: 16px !important;
+	padding: 20px 0px 20px 0px !important;
+	margin: 0px 0px 0px 0px !important;
+	display: block !important;
+	text-align: left !important;
+	background-image: url(http://denvercenter.org/images/default-source/email-images/arrow-black.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 15px !important;
+	background-position: 95% 50% !important;
+}
+
+/*----Tells column to go to the top no matter where it is----*/
+*[class=head] {
+    display:table-header-group !important;
+    width:100% !important;
+ }
+/*----Tells column to go to the bottom no matter where it is----*/
+*[class=foot] {
+    display:table-footer-group !important;
+    width:100% !important;
+}
+.textResize {
+    font-size:75% !important;   
+}
+
+}
+</style>
+</head>
+<body style="padding:0; margin:0; border:none; min-width:100%; background-color:#F1F1F1;">
+<img src="http://link.email-dcpa.org/1x1.dyn" width="1" height="1" border="0">
+<table bgcolor="#F1F1F1" cellpadding="0" cellspacing="0" class="wrappertable" width="100%">
+    <tr> 
+        <!--/\/\/\/\/\/\ Start of the main background /\/\/\/\/\-->
+        <td align="center" bgcolor="#F1F1F1" class="wrappercell">
+            <!--/\/\/\/\/\/\ Start of the gray background /\/\/\/\/\-->
+            
+            <table bgcolor="#F1F1F1" cellpadding="0" cellspacing="0" width="600" class="structure">
+                <tr>
+                    <td bgcolor="#FFFFFF" class="inner-padding" style="padding: 3px 0px 3px 0px; line-height: 1.4em;" align="center">
+                        <!--/\/\/\/\/\/\/\/\ BEGINNING HEADER/\/\/\/\/\/\/\/\-->
+                        
+                        <table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="text-align: left; font-family: Arial, Helvetica, sans-serif; display: inline-table;" width="100%">
+                            <tr>
+                                <td style="text-align:left; line-height:1.2em; font-size:12px; vertical-align:top; color:#FFFFFF; text-align:center;">
+                                    `ph`
+                                </td>
+                            </tr>
+                        </table>
+                        <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td class="foot" align="center" width="70%">
+                                	<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    	<tr>
+                                        	<td style="font-size:65px; font-weight:700; line-height:.9em; color:#747474; font-family: Arial, sans-serif, 'Montserrat'; padding:0px 20px 0px 20px; text-align:center;" align="center">
+                                				<span class="textResize">APPLAUSE</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        	<td style="font-size:12px; font-weight:700; line-height:1.2em; color:#747474; font-family:'Open Sans', Arial, sans-serif; padding:5px 20px 0px 20px; text-align:center;" align="center">
+                                                <span style="font-size:12px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#000000; text-align:center;"><span style="font-weight:bold;">OVATION:</span> A DEEPER LOOK INTO <span style="font-style:italic; text-transform:uppercase;">`showName`</span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="head" align="center" width="30%">
+                                    <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="90%">
+                                    	<tr>
+                                        	<td style="padding:0px 10px 20px 0px; color:#000000; font-family: Arial, sans-serif, 'Montserrat'; font-size:18px; vertical-align:middle;" valign="middle" align="center">
+                                    			<!--<insert><name>CB-DCPA-PrimaryLogo</name></insert>--><img src="https://storage.googleapis.com/dcpa-email-images/200x64-DCPA-logo-primary.png" alt="" style="border:0px; display:block;" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr>
+                                            <td align="center" style="padding:0px 0px 0px 0px; vertical-align:bottom;" valign="bottom">
+                                                <div style="height:5px; border-width:0; color:#BFBFBF; background-color:#BFBFBF; width:90%; vertical-align:bottom:"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table bgcolor="#F1F1F1" cellpadding="0" cellspacing="0" class="wrappertable" width="100%">
+    <tr> 
+        <!--/\/\/\/\/\/\ Start of the main background /\/\/\/\/\-->
+        <td align="center" bgcolor="#F1F1F1" class="wrappercell">
+            <!--/\/\/\/\/\/\ Start of the gray background /\/\/\/\/\-->
+            
+            <table bgcolor="#F1F1F1" cellpadding="0" cellspacing="0" width="600" class="structure">
+                <tr>
+                    <td align="left" bgcolor="#FFFFFF" class="inner-padding" style="padding:0px 0px 0px 0px; text-align: left; line-height: 1.4em;">
+                        <!--/\/\/\/\/\/\/\/\ BEGINNING HEADER/\/\/\/\/\/\/\/\-->
+                        
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                            <!--- BEGINNING ONECOLUMN CONTENT AREA --->
+                            <tr>
+                                <td style="padding:0px; background-color:#EBEBEB;">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                        
+                                        <tr>
+                                            <td style="padding:0px;">
+                                                <!---- NEW SECTION ---->
+                                                <!---- CONTENT BLOCK ---->
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 40px 10px 40px;">
+                                                            
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="font-size:22px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#79C79A; padding:0px 0px 0px 0px; text-align:center; text-transform:uppercase;">
+                                                                        HEADLINE HERE FOR QUICK BLIP FEATURE STORY ABOUT SOMETHING AWESOME
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 20px 0px; text-align:center;">
+                                                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, alias laboriosam illo libero atque sint veniam id dignissimos quae recusandae! Iusto, nobis aspernatur exercitationem sit fuga ad recusandae hic perspiciatis.
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" style="padding:10px 0px 10px 0px;">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" id="full">
+                                                                            <tr>
+                                                                                <td style="background-color:#47B9C7; color:#FFFFFF; text-align:center; font-size:16px; line-height:1.2em; font-weight:400; cursor:pointer; font-family: Arial, sans-serif, 'Montserrat'; padding:5px 40px 5px 40px;" align="center">
+                                                                                    <a style="color:#FFFFFF; text-decoration:none; cursor:pointer;" href="#">READ MORE</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- CONTENT BLOCK ---->
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                    <tr>
+                                                        <td style="padding:0px 40px 30px 40px;">
+                                                            
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="font-size:12px; font-weight:normal; line-height:1.5em; font-family: Arial, sans-serif, 'Montserrat'; color:#47B9C7; padding:3px 0px 3px 0px; text-align:center;">
+                                                                        <a style="color:#47B9C7; text-decoration:none;" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dolor. ▸</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-size:12px; font-weight:normal; line-height:1.5em; font-family: Arial, sans-serif, 'Montserrat'; color:#47B9C7; padding:3px 0px 3px 0px; text-align:center;">
+                                                                        <a style="color:#47B9C7; text-decoration:none;" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, ullam aperiam molestias odit nam ea. ▸</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-size:12px; font-weight:normal; line-height:1.5em; font-family: Arial, sans-serif, 'Montserrat'; color:#47B9C7; padding:3px 0px 3px 0px; text-align:center;">
+                                                                        <a style="color:#47B9C7; text-decoration:none;" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, omnis. ▸</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                                
+                                                <!---- NEW SECTION ---->
+                                                <!---- CONTENT BLOCK ---->
+                                                <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%;"></div>
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 20px 30px 20px;">
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 20px 0px;" align="center">
+                                                                                    <a href="`videoLink`"><img class="img-scale" src="https://storage.googleapis.com/dcpa-email-images/600x300-a-christmas-carol-video-bw.jpg" alt="" style="border:0px; display:block; width:500px;" width="500" /></a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-size:18px; font-weight:bold; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:0px 0px 0px 0px; text-align:center;">
+                                                                        BEHIND THE SCENES: <span style="font-weight:normal">A LOOK BACK AT HOW <span style="font-style:italic; text-transform:uppercase;">`showName`</span> CAME TOGETHER</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                                
+                                                <!---- NEW SECTION ---->
+                                                <!---- CONTENT BLOCK ---->
+                                                <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%;"></div>
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 40px 30px 40px;">        
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td align="center">
+                                                                                    <img src="https://storage.googleapis.com/dcpa-email-images/70x70-clipboard.png" alt="clipboard" style="border:0px; display:block;" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-size:22px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#79C79A; padding:20px 0px 0px 0px; text-align:center;">
+                                                                        YOUR FEEDBACK MATTERS
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 20px 0px; text-align:center;">
+                                                                                    We use feedback about your experience to make sure we’re doing our best for seasons to come. Please take a moment for this short survey so we can continue to improve.
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" style="padding:10px 0px 10px 0px;">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" id="full">
+                                                                            <tr>
+                                                                                <td style="background-color:#47B9C7; color:#FFFFFF; text-align:center; font-size:16px; line-height:1.2em; font-weight:400; cursor:pointer; font-family: Arial, sans-serif, 'Montserrat'; padding:5px 40px 5px 40px;" align="center">
+                                                                                    <a style="color:#FFFFFF; text-decoration:none; cursor:pointer;" href="`surveyLink`">TAKE OUR 3-MINUTE SURVEY</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                                
+                                                <!---- NEW SECTION ---->
+                                                <!---- CONTENT BLOCK ---->
+                                                <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%;"></div>
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 40px 30px 40px;">
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="font-size:22px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#79C79A; padding:20px 0px 0px 0px; text-align:center; text-transform:uppercase;">
+                                                                        "CRAZY AWESOME QUOTE FROM THE PLAY THAT THEY WOULD REMEMBER HERE TO HELP CONTINUE THE EXPERIENCE"
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 20px 0px; text-align:center;">
+                                                                                    - First & Last Name of actor who said the quote
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                                
+                                                <!---- NEW SECTION ---->
+                                                 <!---- CONTENT BLOCK ---->
+                                                <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%;"></div>
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 40px 30px 40px;">
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td align="center">
+                                                                                    <img src="https://storage.googleapis.com/dcpa-email-images/70x70-donation.png" alt="donate icon" style="border:0px; display:block;" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-size:22px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#79C79A; padding:20px 0px 0px 0px; text-align:center;">
+                                                                        DONATE TO THE DCPA
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 20px 0px; text-align:center;">
+                                                                                    The support of our donors brings new voices to our stages, helps students experience theatre and allows us to evolve our craft. Anything you can give will help us educate and inspire our community.
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" style="padding:10px 0px 10px 0px;">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" id="full">
+                                                                            <tr>
+                                                                                <td style="background-color:#47B9C7; color:#FFFFFF; text-align:center; font-size:16px; line-height:1.2em; font-weight:400; cursor:pointer; font-family: Arial, sans-serif, 'Montserrat'; padding:5px 40px 5px 40px;" align="center">
+                                                                                    <a style="color:#FFFFFF; text-decoration:none; cursor:pointer;" href="https://tickets.denvercenter.org/Online/shoppingCart.asp?doWork::WSorder::manageDonations=1&BOparam::WSorder::manageDonations::giftId=DD231FAD-172E-4496-BFD8-F19FB5DE320B&utm_source=yesmail&utm_medium=email&utm_campaign=donate-`__MMID__`">MAKE A DONATION TODAY</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                                
+                                                <!---- NEW SECTION ---->
+                                                <!---- CONTENT BLOCK ---->
+                                                <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%;"></div>
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 20px 30px 20px;" align="center">        
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="font-size:22px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#79C79A; padding:0px 0px 0px 0px; text-align:center;">
+                                                                        UPCOMING SHOWS
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td align="center" class="twocolumn">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 5px 0px;" align="center">
+                                                                                    <div class="similarImage">
+                                                                                    <a href=""><img class="img-scale" src="https://storage.googleapis.com/dcpa-email-images/600x300-frankenstein-art-tt.jpg" alt="" style="border:0px; display:block; width:160px;" width="160" /></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.5em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:3px 0px 3px 0px; text-align:center; text-transform:uppercase; text-align:center;" align="center">
+                                                                                    SEP 30 - OCT 30
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:90%;" align="" id="full"></div>
+                                                                    </td>
+                                                                    <td align="center" class="twocolumn">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 5px 0px;" align="center">
+                                                                                    <div class="similarImage">
+                                                                                    <a href=""><img class="img-scale" src="https://storage.googleapis.com/dcpa-email-images/600x300-glass-menagerie-art-tt.jpg" alt="" style="border:0px; display:block; width:160px;" width="160" /></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.5em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:3px 0px 3px 0px; text-align:center; text-transform:uppercase; text-align:center;" align="center">
+                                                                                    SEP 30 - OCT 30
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:90%;" align="" id="full"></div>
+                                                                    </td>
+                                                                    <td align="center" class="twocolumn">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 5px 0px;" align="center">
+                                                                                    <div class="similarImage">
+                                                                                    <a href=""><img class="img-scale" src="https://storage.googleapis.com/dcpa-email-images/600x300-jersey-boys-tt.jpg" alt="" style="border:0px; display:block; width:160px;" width="160" /></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.5em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:3px 0px 3px 0px; text-align:center; text-transform:uppercase; text-align:center;" align="center">
+                                                                                    SEP 30 - OCT 30
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:90%;" align="" id="full"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                                
+                                                <!---- NEW SECTION ---->
+                                                <!---- CONTENT BLOCK ---->
+                                                <div style="height:3px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%;"></div>
+                                            	<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+                                                	
+                                                    <tr>
+                                                        <td style="padding:40px 20px 30px 20px;" align="center">
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="font-size:22px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#79C79A; padding:0px 0px 0px 0px; text-align:center;">
+                                                                        PHOTO GALLERY
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                <tr>
+                                                                    <td align="center">
+                                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td style="font-size:16px; font-weight:normal; line-height:1.2em; font-family: Arial, sans-serif, 'Montserrat'; color:#747474; padding:10px 0px 5px 0px;" align="center">
+                                                                                    <a href="`galleryLink`"><img class="img-scale" src="https://storage.googleapis.com/dcpa-email-images/600x300-sweet-and-lucky-pp-3.jpg" alt="" style="border:0px; display:block; width:500px;" width="500" /></a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!---- END CONTENT BLOCK ---->
+                                                <!---- END NEW SECTION ---->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <!--/\/\/\/\/\/\/\/\ BEGINNING FOOTER /\/\/\/\/\/\/\/\-->
+                        
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#292929">
+                            <tr>
+                                <td>
+                                    <insert><name>CB-ALL-FooterNavigationNew</name></insert>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
