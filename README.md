@@ -1,1 +1,1 @@
-# email-templates
+# Email Templates
