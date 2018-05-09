@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width">
+<!--POST
+/*************** EDITOR INSERTED BEGIN ***************/
+    
+    // Basic email variables don't change!!!
+    var customerNumber = user.attr('customernumber');
+    var id = user.attr("id");
+    var __MMID__ = masterinfo.getID();
+    var firstName = user.attr('firstName');
+    if (firstName === null || firstName === "") firstName = 'Valued Patron'; //Default Value Condition
+    var email = user.attr('eMail');
+    var alert = "true"; // true || false
+        
+    // Basic show variables
+    var runTime = "x"; // from show page Run Time
+    var runTimeToMins = "x"; // convert runTime into minutes
+    var advisory = "x"; // from show page Advisory
+    var ageRec = "x"; // from show page Age Recommendation
+    var studyGuideLink = "";
+    var applauseLink = "";
+    var relatedEvents = false; // true or false, if requested
+    var theatreName = "x"; // copy from list => Space Theatre, Stage Theatre, Ricketson Theatre, Buell Theatre, The Ellie, The Jones, Garner Galleria Theatre
+    var showName = 'x'; // from show page
+    var seriesName = "x"; // from http://dcpahome/Reports/_layouts/15/ReportServer/RSViewerPage.aspx?rv:RelativeReportUrl=/Reports/Documents/Marketing/Show%20Schedule.rdl or from yesmail Audience targeting
+    var imageURL = "x"; // needs to be 960x430 version from https://console.cloud.google.com/storage/browser/dcpa-email-images?project=dcpa-email-images
+    var shortDes = 'x'; // from show listings page
+    var division = "x"; // copy from list => BWAY = Broadway | TC = Company | C = Cabaret | OC = Off-Center | EDU = Education | ES = Event Service | P = Primary
+    var performance_start_date = int; // matches the targeting for Performance Start Date on Audience step (how many days out the performance is, use for testing, should be "2" for the actual send)
+    
+    var bwaySponsors = "false"; // true || false
+    var tcSponsors = "false"; // true || false
+    var mediaSponsors = "false"; // true || false    
+    
+    // Date conversion variables.
+    var today = new Date();
+    today.setDate(today.getDate() + performance_start_date);
+    var monthStr = today.toString().slice(4, 7);
+    var dayStr = today.toString().slice(8, 10).replace(/^(0+)/g, '');
+    var dayNameStr = today.toString().slice(0, 3);
+
+    function performDate(str)
+    {
+        var n=str.indexOf(" ");
+        var sDate = str.slice(0,n);
+        
+        return(sDate);
+    }
+    
+    function performTime(str)
+    {
+        var n=str.indexOf(" "); // returns the first index at which a given element can be found in the array, or -1 if it is not present.
+        var sTime = str.slice(n+1); // returns a shallow copy of a portion of var n array into a new array (sTime) object selected
+        var timeArr = sTime.split(":"); // splits a String object (sTime) into an array of strings (timeArr) by separating the string into substrings.
+        var timeHH = timeArr[0].replace(/^(0+)/g, ''); // replaces the leading zeros and replaces it with an empty string
+        var timeEnding = str.split(" "); // splits the original string parameter into an array of strings (timeEnding) by separating the string into substrings.
+        var timeHM = timeHH  + ":" + timeArr[1] + timeEnding[2]; // Concatenating the variables to a readable format
+           
+        return(timeHM);
+    }
+    
+    function performDateTime(str)
+    {
+        var n=str.indexOf(" "); // returns the first index at which a given element can be found in the array, or -1 if it is not present.
+        var sTime = str.slice(n+1); // returns a shallow copy of a portion of var n array into a new array (sTime) object selected
+        var timeArr = sTime.split(":"); // splits a String object (sTime) into an array of strings (timeArr) by separating the string into substrings.
+        var timeHH = timeArr[0].replace(/^(0+)/g, ''); // replaces the leading zeros and replaces it with an empty string
+        var timeEnding = str.split(" "); // splits the original string parameter into an array of strings (timeEnding) by separating the string into substrings.
+        var dateTime = timeHH  + ":" + timeArr[1] + "+" + timeEnding[2]; // Concatenating the variables to a readable format
+           
+        return(dateTime);
+    }
+
+    var a = 0;
+    var PERFORMANCE_START_DATE = [];
+    var schdDateTime = [];
+    var schdDate = [];
+    var schdTime = [];
+    var tblName = "getPerformanceStartDate";
+
+    multitable.setID3(tblName, id, seriesName, performance_start_date);
+    //multitable.setID2("getPerformanceDate", id, seriesName);
+    //document.write("Have Set ID3<br />");
+    while (multitable.getNext("getPerformanceStartDate")) {
+     //document.write("Read a record?<br />");
+       PERFORMANCE_START_DATE[a] = multitable.getValue(tblName, "PERFORMANCE_START_DATE"); 
+       var psd = multitable.getValue(tblName, "PERFORMANCE_START_DATE"); 
+       //document.write("Date: " + psd + "<br />");
+       schdDateTime[a] = performDateTime(psd);
+       schdDate[a] = performDate(psd);
+       schdTime[a] = performTime(psd); 
+       a++;
+    }
+
+    // Save The Date variables. Builds the ADD TO CALENDAR button for the performance. ROOT URL = https://www.addevent.com/dir/
+    var client = "a2uvf5qiwzypxn60mmg32889";
+    var start = schdDate + schdDateTime;
+    var duration = runTimeToMins; // convert the run time from hour & minutes to minutes and put that number here
+    var title = showName.replace(/<(?:.|\n)*?>/gm, '').replace(/ /g, "%20").replace(/'/g, "%27");
+    var date_format = "MM%2FDD%2FYYYY";
+    var timezone = "America/Denver";
+
+    var preview = "ON"; // ON or OFF be sure to change this to OFF before sending!!!
+    var seg = "REMINDER EMAIL"; // the name of the segment to match targeting
+    var sl = "We can't wait to see you at the theatre, " + firstName; // subject line - don't change this at all
+    var pv = "Here's everything you need to know before " + showName; // preview text - don't change this at all
+    var sl2 = "";
+    var pv2 = "";
+/*************** EDITOR INSERTED END ***************/
+POST-->
+<insert><name>CB-MASTER-CSS</name></insert>
+</head>
+
+<body bgcolor="#F6F6F6"  style="padding:0; margin:0; border:none; min-width:100%;">
+<div style="display: none; max-height: 0px; overflow: hidden;">
+ `pv`
+</div>
+<!-- Insert &zwnj;&nbsp; hack after hidden preview text -->
+<div style="display: none; max-height: 0px; overflow: hidden;">
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+</div>
+
+<!--POST /** SUBJECT LINE PERSONALIZATION BEGIN **/
+var __slp__firstName = user.attr("firstName");
+if (__slp__firstName == null || __slp__firstName == "") __slp__firstName = "Valued Patron";
+document.subject("We can't wait to see you at the theatre, " + __slp__firstName + "");
+/** SUBJECT LINE PERSONALIZATION END **/ POST-->
+
+<img src="http://link.email-dcpa.org/1x1.dyn" width="1" height="1" border="0">
+<!-- BEGINNING OF PREVIEW FOR SUBJECT LINE AND PREVIEW TEXT -->
+<!--POST if(preview === "ON") { POST-->
+<insert><name>CB-MASTER-SL-PV</name></insert>
+<!--POST } POST-->
+<insert><name>CB-MASTER-SHELL-TOP</name></insert>
+<insert><name>CB-MASTER-DCPA-LOGOS</name></insert>
+ <!-- BEGINNING OF PERFORMANCE INFORMATION -->
+ <insert><name>CB-MASTER-REMINDER</name></insert>
+ 
+ <!-- BEGINNING OF ALERT CALL OUT -->
+ <insert><name>CB-MASTER-SHOW-ALERT</name></insert>
+
+ <!-- BEGINNING OF ABOUT THE SHOW -->
+ <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF">
+  <tr>
+   <td>
+    <table bgcolor="#FFFFFF">
+     <tr>
+      <td style="padding:10px 20px 20px 20px; text-align: left;">
+       <p style="color:#79C79A; font-size:24px; line-height: 1em; font-family: Arial, sans-serif; font-weight: bold;">ABOUT THE SHOW:</p>
+       <p style="color:#747474; font-size:16px; line-height: 1.2em; font-family: Arial, sans-serif;">
+        `shortDes`
+        <br><br>
+        <!--POST if(runTime !== "") { POST-->
+        <span style="font-weight:bold;">Run Time:</span> `runTime`<br/>
+        <!--POST } POST-->
+        <!--POST if(advisory !== "") { POST-->
+        <span style="font-weight:bold;">Advisory:</span> `advisory`<br/>
+        <!--POST } POST-->
+        <!--POST if(ageRec !== "") { POST-->
+        <span style="font-weight:bold;">Age Recommendation:</span> `ageRec`<br/>
+        <!--POST } POST-->
+        <!--POST if(studyGuideLink !== "") { POST-->
+        <span style="font-weight:bold;"><a style="color:#79C79A; text-decoration:none; font-weight:bold; text-transform: uppercase;" href="`studyGuideLink`">Study Guide ▸</a></span><br/><br/>
+        <!--POST } POST-->
+        <!--POST if(applauseLink !== "") { POST-->
+        <span style="font-weight:bold;"><a style="color:#79C79A; text-decoration:none; font-weight:bold; text-transform: uppercase;" href="`applauseLink`">Applause  ▸</a></span><br/><br/>
+        <!--POST } POST-->
+       </p>
+       <!--RELATED EVENTS SECTION-->
+       <!--POST if(relatedEvents == "true") { POST-->
+       <!--POST if(psd == "12/14/2017 07:00:00 pm") { POST-->
+       <p style="color:#79C79A; font-size:24px; line-height: 1em; font-family: Arial, sans-serif; font-weight: bold;">RELATED EVENTS:</p>
+       <p style="color:#747474; font-size:16px; line-height: 1.2em; font-family: Arial, sans-serif;">
+        <span style="color:#747474; font-weight: bold;">Theatre Thursday</span><br>
+        <span style="color:#005775;">Dec 14 | 7:00pm</span><br>
+        <span style="color:#005775;">Helen Bonfils Lobby</span><br>
+        Theatre Thursdays are a new, fun way to make your night at the theatre even more memorable. Enjoy festive pre-show parties including a cocktail and live music.
+       </p>
+       <!--POST } POST-->
+       <!--POST } POST-->
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+
+ <!-- BEGINNING OF ALERT CALL OUT -->
+ <insert><name>CB-MASTER-PARKING-ALERT</name></insert>
+
+ <!-- BEGINNING OF PARKING AND DINING -->
+ <insert><name>CB-MASTER-PARKING-DINING</name></insert>
+
+ <!-- BEGINNING OF THEATRES & SEATING -->
+ <!--POST if(theatreName !== "") { POST-->
+ <insert><name>CB-MASTER-THEATRES-SEATING-MAPS</name></insert>
+ <!--POST } POST-->
+ 
+ <!-- BEGINNING OF TICKET QUESTIONS -->
+ <insert><name>CB-MASTER-TICKET-QUESTIONS</name></insert>
+
+ <hr style="height:10px; border-width:0; color:#F6F6F6; background-color:#F6F6F6; width:100%; padding:0px; margin:0px;" />
+ 
+ <!-- BEGINNING OF FOOTER -->
+<div style="background-color:#FFFFFF;">
+ <insert><name>CB-ALL-FooterNavigationReminder</name></insert>
+</div>
+
+<insert><name>CB-MASTER-SHELL-BOTTOM</name></insert>
+</body>
+</html>
