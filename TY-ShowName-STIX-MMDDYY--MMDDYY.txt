@@ -1,0 +1,119 @@
+<!--POST
+/*************** EDITOR INSERTED BEGIN ***************/
+    var customerNumber = user.attr('customernumber');
+    var __MMID__ = masterinfo.getID();
+    var id = user.attr("id");
+    var __firstName__ = user.attr('firstName');
+    if (__firstName__ === null || __firstName__ === "") __firstName__ = 'Valued Patron'; //Default Value Condition
+    var email = user.attr('eMail');
+    var surveyLink = "x";
+    var storyMainBlock = "NO";
+    var storySubBlock = "NO";
+    var videoBlock = "YES";
+    var galleryBlock = "NO";
+    var comingUpBlock = "NO";
+    var quoteBlock = "NO";
+    var addedContent = "NO";
+    var showName = "x".toUpperCase();
+    var seriesName = removeQuote("x");
+    var performance_start_date = -1;
+    var division = "";
+    var sl = removeHTML("Thank you for attending " + showName);
+    var pv = "Discover post-show resources, videos, and invitations to community events ";
+    var sl2 = "";
+    var pv2 = "Let us know what you thought of your experience";
+    
+    /** SUBJECT LINE PERSONALIZATION BEGIN **/
+    document.subject(sl);
+    /** SUBJECT LINE PERSONALIZATION END **/
+    
+    // function that removes any HTML characters from a str
+    function removeHTML(str) {
+        var plain = str.replace(/<(?:.|\n)*?>/gm, '');
+        return(plain);
+    }
+    
+    // fucntion that remove apostrophy from a string
+    function removeQuote(str) {
+        var plain = str.replace(/'|"/gm, '');
+        return(plain);
+    }
+    
+    // Performance Date script/variables
+    function performDate(str)
+    {
+        var n=str.indexOf(" ");
+        var sDate = str.slice(0,n);
+        return(sDate);
+    }
+    function performTime(str)
+    {
+        var n=str.indexOf(" "); // returns the first index at which a given element can be found in the array, or -1 if it is not present.
+        var sTime = str.slice(n+1); // returns a shallow copy of a portion of var n array into a new array (sTime) object selected
+        var timeArr = sTime.split(":"); // splits a String object (sTime) into an array of strings (timeArr) by separating the string into substrings.
+        var timeHH = timeArr[0].replace(/^(0+)/g, ''); // replaces the leading zeros and replaces it with an empty string
+        var timeEnding = str.split(" "); // splits the original string parameter into an array of strings (timeEnding) by separating the string into substrings.
+        var timeHM = timeHH  + ":" + timeArr[1] + timeEnding[2]; // Concatenating the variables to a readable format
+        
+        return(timeHM);
+    }
+    function performDateTime(str)
+    {
+        var n=str.indexOf(" "); // returns the first index at which a given element can be found in the array, or -1 if it is not present.
+        var sTime = str.slice(n+1); // returns a shallow copy of a portion of var n array into a new array (sTime) object selected
+        var timeArr = sTime.split(":"); // splits a String object (sTime) into an array of strings (timeArr) by separating the string into substrings.
+        var timeHH = timeArr[0].replace(/^(0+)/g, ''); // replaces the leading zeros and replaces it with an empty string
+        var timeEnding = str.split(" "); // splits the original string parameter into an array of strings (timeEnding) by separating the string into substrings.
+        var dateTime = timeHH  + ":" + timeArr[1] + "+" + timeEnding[2]; // Concatenating the variables to a readable format
+           
+        return(dateTime);
+    } 
+
+    var a = 0;
+    var PERFORMANCE_START_DATE = [];
+    var schdDateTime = [];
+    var schdDate = [];
+    var schdTime = [];
+    var tblName = "getPerformanceStartDate";
+
+    multitable.setID3(tblName, id, seriesName, performance_start_date);
+    //multitable.setID2("getPerformanceDate", id, seriesName);
+    //document.write("Have Set ID3<br />");
+    while (multitable.getNext("getPerformanceStartDate")) {
+      //document.write("Read a record?<br />");
+      PERFORMANCE_START_DATE[a] = multitable.getValue(tblName, "PERFORMANCE_START_DATE"); 
+      var psd = multitable.getValue(tblName, "PERFORMANCE_START_DATE"); 
+      //document.write("Date: " + psd + "<br />");
+      schdDateTime[a] = performDateTime(psd);
+      schdDate[a] = performDate(psd);
+      schdTime[a] = performTime(psd);
+      a++;
+    } 
+    
+    var psdDateTime = schdDate[0] + "+" + schdDateTime[0]; // Concatenating the variables to a readable format by adding a "+" in place of the spaces.
+    
+/*************** EDITOR INSERTED END ***************/
+POST-->
+<insert><name>TY-ApplauseOvation-Header</name></insert>
+
+--------------------------------------------
+
+<insert><name>TY-Survey-Generic</name></insert>
+
+<insert><name>TY-StoryMain-Template</name></insert>
+
+<insert><name>TY-StorySub-Template</name></insert>
+
+<insert><name>TY-Video-Template</name></insert>
+
+<insert><name>TY-Gallery-Template</name></insert>
+
+<insert><name>TY-Quote-Template</name></insert>
+
+<insert><name>TY-Donate-Generic</name></insert>
+
+<insert><name>TY-ComingUp-Template</name></insert>
+
+--------------------------------------------
+
+<insert><name>CB-ALL-FooterNavigation</name></insert>
