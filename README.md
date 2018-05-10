@@ -1,3 +1,3 @@
 # Email Templates
 
-This is a description of what these templates are about.
+The pre and post show email templates for any performance or event.
